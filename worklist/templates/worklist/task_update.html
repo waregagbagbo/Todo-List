@@ -1,7 +1,22 @@
-<h1>Edit the Tasks</h1>
-<a href="{% url 'tasks'%}">Go Back</a>
-<form action="#" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-<input type="submit" value="submit">
-</form>
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <h2>Edit the Task</h2>
+                <a href="{% url 'tasks'%}" class="btn">Go Back</a>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

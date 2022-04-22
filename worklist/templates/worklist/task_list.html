@@ -1,35 +1,38 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<h1>My Tasks</h1>
-<a href="{% url 'task-add' %}">Add Task</a>
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <h2 style="margin:20px";>My Todos</h2>
+        <a class="btn" href="{% url 'task-add' %}">Add Another Task</a>
+        <form method="GET">
+          <input type="text"  name="search-area" value="{{searh_input}}">
+          <input type="submit" value="search">        
+        </form>        
+        <table id="table-section">
+          <tr>
+          </tr> 
+          {% for task in tasks %}
+          <tr id="each-list">
+              <td>{{ task.title }}
+                <a href="{% url 'task' task.id %}" >View</a>
+                <a href="{% url 'task_update' task.id %}">Edit</a>
+                <a href="{% url 'task_delete' task.id %}">Delete</a>
+              </td>
+        
+            </tr>
+            {%empty%}
+            <h4>Incompleted Tasks</h4>        
+     
+         
+          {% endfor %}         
+            
+        </table>     
+                 
+      </div>
+  </div>
+</div>   
 
-<form method="GET">
-  <input type="text"  name="search-area" value="{{searh_input}}">
-  <input type="submit" value="search">
-
-</form>
-
-<table>
-  <tr>
-  </tr> 
-  {% for task in tasks %}
-  <tr>
-      <td>{{task.title }}
-        <a href="{% url 'task' task.id %}">View</a>
-        <a href="{% url 'task_update' task.id %}">Edit</a>
-        <a href="{% url 'task_delete' task.id %}">Delete</a>
-      </td>
-
-  </tr> 
-  {% empty %}
-  {% endfor %}
-    
-</table>
-
-
-
-
-
-{% endblock %}
+{%endblock%}
 

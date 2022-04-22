@@ -1,3 +1,14 @@
-<a href="{% url 'tasks'%}">Go Back</a>
-<p>Task detail</p>
-{{task}}
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="#">Go Back</a>
+            {{task}}                
+        </div>         
+
+     </div>
+    </div>
+</div>
+
+{%endblock %}
