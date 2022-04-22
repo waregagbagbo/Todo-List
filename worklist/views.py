@@ -36,7 +36,7 @@ class TaskList(LoginRequiredMixin, ListView):
     def  get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tasks"] =  context["tasks"].filter(user=self.request.user) # queries user related-data
-        context["tasks"] = context["tasks"].filter(complete=False)
+        context["tasks"] = context["tasks"].filter(complete=True)
     # search view section
         search_input = self.request.GET.get('searh_input') or '' # the apostrophe is for an empty search
         if  search_input:
