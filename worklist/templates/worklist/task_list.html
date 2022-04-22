@@ -1,11 +1,6 @@
-{% if request.user.is_authenticated %}
-  <p>Welcome {{request.user}}</p>
-    <a href="{% url 'logout' %}">Logout</a>
-{% else %}
-   <a href="{% url 'login' %}">Login</a>
-{% endif %}
+{%extends 'base.html'%}
 
-
+{%block content%}
 <h1>My Tasks</h1>
 <a href="{% url 'task-add' %}">Add Task</a>
 
@@ -31,3 +26,10 @@
   {% endfor %}
     
 </table>
+
+
+
+
+
+{% endblock %}
+
