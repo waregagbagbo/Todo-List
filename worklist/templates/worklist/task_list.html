@@ -1,18 +1,18 @@
 {%extends 'base.html'%}
 
-{%block content%}
+{% block content %}
 <div class="container my-5">
   <div class="row">
     <!--search section bar-->
     <div class="col-xs-6 col-md-8">
       <form class="d-flex" method="GET">
-        <input type="text" class="form-control me-2" placeholder="search for tasks" name="search-area" value="{{search_input}}">
+        <input type="text" class="form-control me-2" placeholder="search for tasks" name="search_input" value="{{search_input}}">
         <button class="btn btn-outline-success" type="submit">Search</button>       
       </form> 
     </div>
     <!----task add section-->
     <div class="col-xs-6 col-md-4 mx 4">
-      <button type="button" class="btn btn-group-sm" href="">Add New Task</button>
+      <a href="{%url 'task-add' %}" class="btn btn-group-sm ">Add New Task</a>
     </div>
   </div>
 </div>
@@ -30,30 +30,31 @@
           <tr>
           </tr>
           {% for task in tasks %}
-          <tr>
+           <tr>
             <td>
               {{task.title}}
-              <div>
-                <button type="button" class="btn btn-primary -outline-primary btn-group-sm mx-5" href="#">View</button>
-                <button type="buttton" class="btn btn-success -outline-success btn-group-sm" href="#">Edit</button>
-                <button type="button" class="btn btn-danger btn-group-sm mx-4" href="#">Delete</button>            
-
+              <div class="links mx-5">
+                <a href="{% url 'task' task.id %}" class="btn btn-primary btn-primary">View</a>
+                <a href="{% url 'task_update' task.id %}" class="btn btn-success btn-success">Edit</a>
+                <a href="{% url 'task_delete' task.id %}" class="btn btn-danger btn-danger">Delete</a>
               </div>              
             </td>
-          </tr>         
+            {% empty %}
+            <p>Nothing to show</p>
+           </tr>      
           
           {%endfor%}
         </tbody>
       </table>    
     </div>
     <div class="col-xs-4 col-md-4 mx-8 ">
-      <sidebar>
-        <p>sidebar</p>
+     
       </sidebar>
     </div>
   </div>
 </div>
-{%endblock%}
+
+{% endblock %}
 
 
 

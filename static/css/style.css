@@ -30,3 +30,6 @@ body{
 .cont{
     background-color:#fff;
 }
+.links, a{
+    margin-left:2em;
+}
