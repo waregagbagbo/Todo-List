@@ -1,38 +1,59 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col">
-        <h2 style="margin:20px";>My Todos</h2>
-        <a class="btn" href="{% url 'task-add' %}">Add Another Task</a>
-        <form method="GET">
-          <input type="text"  name="search-area" value="{{searh_input}}">
-          <input type="submit" value="search">        
-        </form>        
-        <table id="table-section">
-          <tr>
-          </tr> 
-          {% for task in tasks %}
-          <tr id="each-list">
-              <td>{{ task.title }}
-                <a href="{% url 'task' task.id %}" >View</a>
-                <a href="{% url 'task_update' task.id %}">Edit</a>
-                <a href="{% url 'task_delete' task.id %}">Delete</a>
-              </td>
-        
-            </tr>
-            {%empty%}
-            <h4>Incompleted Tasks</h4>        
-     
-         
-          {% endfor %}         
-            
-        </table>     
-                 
-      </div>
+    <!--search section bar-->
+    <div class="col-xs-6 col-md-8">
+      <form class="d-flex" method="GET">
+        <input type="text" class="form-control me-2" placeholder="search for tasks" name="search-area" value="{{search_input}}">
+        <button class="btn btn-outline-success" type="submit">Search</button>       
+      </form> 
+    </div>
+    <!----task add section-->
+    <div class="col-xs-6 col-md-4 mx 4">
+      <button type="button" class="btn btn-group-sm" href="">Add New Task</button>
+    </div>
   </div>
-</div>   
+</div>
+<!--container for task list-->
+<div class="container" style="background-color:#fff;">
+  <div class="row">
+    <div class="col-xs-8 col-md-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          </tr>
+          {% for task in tasks %}
+          <tr>
+            <td>
+              {{task.title}}
+              <div>
+                <button type="button" class="btn btn-primary -outline-primary btn-group-sm mx-5" href="#">View</button>
+                <button type="buttton" class="btn btn-success -outline-success btn-group-sm" href="#">Edit</button>
+                <button type="button" class="btn btn-danger btn-group-sm mx-4" href="#">Delete</button>            
 
+              </div>              
+            </td>
+          </tr>         
+          
+          {%endfor%}
+        </tbody>
+      </table>    
+    </div>
+    <div class="col-xs-4 col-md-4 mx-8 ">
+      <sidebar>
+        <p>sidebar</p>
+      </sidebar>
+    </div>
+  </div>
+</div>
 {%endblock%}
+
+
 

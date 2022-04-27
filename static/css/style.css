@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@1,600&display=swap');
-:root{
-    padding:0;
-    margin:0;
+htm{
+    padding:0px;
+    margin:0px;
 }
+
 body{
     background-color:rgba(0, 0, 0, 0.11)!important;
     font-family: 'Libre Bodoni', serif !important;
@@ -25,4 +26,7 @@ body{
     border: 1px solid #000;
     margin-top:10px;
     padding: 10px;
+}
+.cont{
+    background-color:#fff;
 }
