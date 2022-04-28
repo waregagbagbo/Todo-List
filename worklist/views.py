@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from .models import Task 
+from .forms import TaskCreationForm
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -24,7 +25,7 @@ class CustomLoginView(LoginView):
 class RegisterUserView(CreateView):
     template_name = 'worklist/register.html'
     success_url = reverse_lazy('login')
-    form_class =UserCreationForm
+    form_class = UserCreationForm
 
 
 # Create your views here.
@@ -57,7 +58,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     success_url = reverse_lazy('tasks') 
-    fields = ['title','description','complete']
+    form_class = TaskCreationForm
+    #fields = ['title','description','complete']
     template_name ='worklist/task_form.html'
     
     # this is a method that automatically covers the user created form data
@@ -68,7 +70,8 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title','description','complete']
+    #fields = ['title','description','complete']
+    form_class = TaskCreationForm    
     success_url = reverse_lazy('tasks')
     template_name ='worklist/task_update.html'
 
