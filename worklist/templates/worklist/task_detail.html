@@ -1,14 +1,19 @@
-{% extends 'base.html'%}
-{% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <a href="#">Go Back</a>
-            {{task}}                
-        </div>         
+{%extends 'base.html'%}
 
-     </div>
-    </div>
+{%block content%}
+<div class="container">
+        <div class="row-justify-center p-md-5">
+            <h2>Task Overview</h2>
+            <div class="card" style="width: 20em;">
+                <img src="https://cdn.pixabay.com/photo/2020/05/30/09/53/todo-lists-5238324_960_720.jpg" class="card-img-top" alt="web">
+                <div class="card-body">
+                  <h5 class="card-title">Task : {{task.title}}</h5>
+                  <p class="card-text">Description : {{task.description }}</p>
+                  <p class="card-text">Completed : {{task.completed }}</p>
+                  <a href="{% url 'tasks'%}" class="btn btn-primary">Go Back</a>
+                </div>
+              </div>
+        </div>    
 </div>
 
-{%endblock %}
+{%endblock%}
