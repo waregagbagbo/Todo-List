@@ -4,11 +4,11 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from .models import Task 
-from .forms import TaskCreationForm
+from .forms import TaskCreationForm,RegisterUserForm
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.forms import UserCreationForm
 
 
 # for login using CBV   
@@ -25,7 +25,7 @@ class CustomLoginView(LoginView):
 class RegisterUserView(CreateView):
     template_name = 'worklist/register.html'
     success_url = reverse_lazy('login')
-    form_class = UserCreationForm
+    form_class = RegisterUserForm
 
 
 # Create your views here.
@@ -41,8 +41,7 @@ class TaskList(LoginRequiredMixin, ListView):
     # search view section
         search_input = self.request.GET.get('search_input') or '' # the apostrophe is for an empty search
         if  search_input:
-           context["tasks"] = context["tasks"].filter(title_startswith=search_input)
-        
+           context["tasks"] = context["tasks"].filter(title_startsWith=search_input)        
         context['search_input'] = search_input
         return context
     
@@ -70,7 +69,6 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    #fields = ['title','description','complete']
     form_class = TaskCreationForm    
     success_url = reverse_lazy('tasks')
     template_name ='worklist/task_update.html'
