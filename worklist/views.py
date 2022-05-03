@@ -41,7 +41,7 @@ class TaskList(LoginRequiredMixin, ListView):
     # search view section
         search_input = self.request.GET.get('search_input') or '' # the apostrophe is for an empty search
         if  search_input:
-           context["tasks"] = context["tasks"].filter(title_startsWith=search_input)        
+           context["tasks"] = context["tasks"].filter(title__startswith=search_input)        
         context['search_input'] = search_input
         return context
     
