@@ -2,7 +2,7 @@
 {% block content%}
 {% load crispy_forms_tags %}
 
-<div class="container my-5  px-5 mx-auto">
+<div class="container my-3  px-5 mx-auto">
     <div class="row">
         <div class="col-sm-12 col-md-6">
             <div class="form-group mt-3 gap-3">
@@ -13,12 +13,13 @@
                         <input type="submit" class="btn btn-primary group-sm" value="login">
                         <p>Don't have an account?</p>
                         <a  href="{%url 'register'%}">Register</a>
-
                     </div>                        
                 </form>
-
             </div>
-
+        </div>
+        <div class="col-md-6 mt-0">
+            <div class="col-sm-12 col-md-4">
+            </div>
         </div>
     </div>
 </div>
