@@ -8,7 +8,10 @@
       <form class="d-flex" method="GET">
         <input type="text" class="form-control me-2" placeholder="search for tasks" name="search_input" value="{{search_input}}">
         <button class="btn btn-outline-success" type="submit">Search</button> 
-      </form> 
+      </form>
+      <div>
+      </div> 
+      <h6 style="margin-top:3px;padding:10px;font-weight:bold;">You have {{count}} incomplete task{{count |pluralize:'s'}}</h6>
     </div>
     <!----task add section-->
     <div class="col-sm-6 col-md-4 mx 4">
@@ -30,12 +33,11 @@
         <tbody>
           {% for task in tasks %}
           <tr>
-          </tr>
-          
+          </tr>          
            <tr>
             <td>
               {{task.title}}
-              <div class="links mx-5">
+              <div class="links mt-4">
                 <a href="{% url 'task' task.id %}" class="btn btn-primary btn-primary">View</a>
                 <a href="{% url 'task_update' task.id %}" class="btn btn-success btn-success">Edit</a>
                 <a href="{% url 'task_delete' task.id %}" class="btn btn-danger btn-danger">Delete</a>
@@ -49,7 +51,7 @@
         </tbody>
       </table>    
     </div>
-    <div class="">
+<!--<div class="">
       <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
@@ -69,7 +71,7 @@
 </div>
     </div>
   </div>
-</div>
+</div>-->
 
 {% endblock %}
 

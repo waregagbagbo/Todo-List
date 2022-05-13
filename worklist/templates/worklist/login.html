@@ -4,15 +4,15 @@
 
 <div class="container my-3  px-5 mx-auto">
     <div class="row">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-8 col-md-6">
             <div class="form-group mt-3 gap-3">
                 <form method="POST">
                     {% csrf_token %}
                     {{form|crispy}}
-                    <div class="div">
+                    <div class="div" style="margin-top: 10px;">
                         <input type="submit" class="btn btn-primary group-sm" value="login">
                         <p>Don't have an account?</p>
-                        <a  href="{%url 'register'%}">Register</a>
+                        <a  href="{%url 'register'%}" style="color:#000; border:1px solid black; border-radius:5px; padding:10px;">Register</a>
                     </div>                        
                 </form>
             </div>
