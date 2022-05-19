@@ -1,14 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.urls import  reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from .models import Task 
 from .forms import TaskCreationForm,RegisterUserForm
+from datetime import datetime
 
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
+#from django.utils.timezone import now
 #from django.contrib.auth.forms import UserCreationForm
 
 
@@ -17,9 +19,10 @@ class CustomLoginView(LoginView):
     template_name = 'worklist/login.html'
     fields = '__all__'
     redirect_authenticated_user = True
+    
 # define a method to achieve the success url    
     def get_success_url(self):
-        return reverse_lazy('tasks')
+        return reverse_lazy('tasks') 
 
 # for registeration
 
@@ -81,3 +84,10 @@ class  TaskDelete(DeleteView, LoginRequiredMixin):
     model = Task
     context_object_name ='worklist/task_confirm_delete.html'
     success_url = reverse_lazy('tasks')
+
+
+# display current time
+
+
+  
+

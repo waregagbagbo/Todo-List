@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'worklist',
     'crispy_forms',
 ]
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [ 
     'django.middleware.security.SecurityMiddleware',
@@ -135,6 +134,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 

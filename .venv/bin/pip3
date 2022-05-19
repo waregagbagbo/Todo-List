@@ -1,4 +1,4 @@
-#!/home/warega/Todo_List/.venv/bin/python
+#!/home/warega/Todo_List/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
